@@ -1,8 +1,8 @@
 {
-  "name": "matryoshka-cli",
+  "name": "matryoshka-js",
   "version": "0.0.0",
   "description": "lang to lang to lang to lang..",
-  "main": "matryoshka",
+  "bin": { "matryoshka-js" : "index.js" },
   "scripts": {
     "test": "test"
   },
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/nodar-chkuaselidze/matryoshka/issues"
   },
-  "homepage": "https://github.com/nodar-chkuaselidze/matryoshka"
+  "homepage": "https://github.com/nodar-chkuaselidze/matryoshka",
+  "dependencies": {
+    "optimist": "^0.6.1"
+  }
 }
