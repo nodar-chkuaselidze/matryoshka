@@ -1,0 +1,24 @@
+{
+  "name": "matryoshka-cli",
+  "version": "0.0.0",
+  "description": "lang to lang to lang to lang..",
+  "main": "matryoshka",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodar-chkuaselidze/matryoshka.git"
+  },
+  "keywords": [
+    "convert",
+    "language",
+    "cli"
+  ],
+  "author": "Nodari Chkuaselidze",
+  "license": "The Unlicense",
+  "bugs": {
+    "url": "https://github.com/nodar-chkuaselidze/matryoshka/issues"
+  },
+  "homepage": "https://github.com/nodar-chkuaselidze/matryoshka"
+}
