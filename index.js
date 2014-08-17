@@ -19,6 +19,11 @@ argv = optimist
     alias : 'extract',
     describe : 'Extract packed'
   })
+  .options('d', {
+    alias : 'depth',
+    describe : 'Depth of packers',
+    default : 5
+  })
   .options('i', {
     alias : 'include',
     describe : 'Include languages, comma separated "js,c"',
