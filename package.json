@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "lang to lang to lang to lang..",
   "preferGlobal": "true",
-  "bin": { "matryoshka-js" : "index.js" },
+  "bin": {
+    "matryoshka-js": "index.js"
+  },
   "scripts": {
     "test": "test"
   },
@@ -23,6 +25,9 @@
   },
   "homepage": "https://github.com/nodar-chkuaselidze/matryoshka",
   "dependencies": {
-    "optimist": "^0.6.1"
+    "lodash": "^2.4.1",
+    "optimist": "^0.6.1",
+    "q": "^1.0.1",
+    "q-io": "^1.11.4"
   }
 }
