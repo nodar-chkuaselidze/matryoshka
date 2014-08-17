@@ -2,6 +2,7 @@
   "name": "matryoshka-js",
   "version": "0.0.0",
   "description": "lang to lang to lang to lang..",
+  "preferGlobal": "true",
   "bin": { "matryoshka-js" : "index.js" },
   "scripts": {
     "test": "test"
