@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-var optimist = require('optimist'), argv;
+var optimist = require('optimist'),
+    CLI = require('./lib/CLI'),
+    argv;
 
 argv = optimist
   .usage('Pack the input, Usage: $0')
@@ -39,4 +41,4 @@ argv = optimist
   })
   .argv;
 
-new require('./lib/CLI')(argv);
+new CLI(argv, optimist);
