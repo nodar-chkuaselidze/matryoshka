@@ -60,13 +60,27 @@ CLI.prototype.fileInit = function () {
   this.file = path.resolve(this.argv.file);
 
   if (!fs.existsSync(this.file)) {
-    this.error('File "' + this.argv.file + '" not found');
+    this.error('File "' + this.file + '" not found');
   }
 
   var stats = fs.statSync(this.file);
   if (stats.isFile()) {
     this.in = fs.createReadStream(this.file);
   }
+};
+
+CLI.prototype.outputInit = function () {
+  var self = this;
+
+  this.output = path.resolve(this.argv.output);
+  if (fs.existsSync(this.output)) {
+    this.error('File "' + this.output + '" already exists, won\'t overwrite');
+  }
+
+  this.out = fs.createWriteStream(this.output);
+  this.out.on('error', function () {
+    self.error('Could not write to file "' + self.output + '"');
+  });
 };
 
 CLI.prototype.help = function () {
