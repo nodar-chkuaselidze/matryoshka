@@ -29,5 +29,9 @@
     "optimist": "^0.6.1",
     "q": "^1.0.1",
     "q-io": "^1.11.4"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
   }
 }
