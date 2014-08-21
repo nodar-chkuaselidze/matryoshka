@@ -26,6 +26,10 @@ argv = optimist
     alias : 'extract',
     describe : 'Extract packed'
   })
+  .options('q', {
+    alias : 'queue',
+    describe : 'Queue of packers'
+  })
   .options('d', {
     alias : 'depth',
     describe : 'Depth of packers',
