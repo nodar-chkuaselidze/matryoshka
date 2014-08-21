@@ -7,7 +7,7 @@
     "matryoshka-js": "index.js"
   },
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
