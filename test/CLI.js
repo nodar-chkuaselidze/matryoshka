@@ -36,7 +36,7 @@ describe('CLI Tool', function () {
 
   it('should return error if file not found', function (done) {
     argv = { file : 'filethat!@#$%\n^CantExist' };
-    
+
     console.error = function (error) {
       var notFoundExp = /not found/
 
