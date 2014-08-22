@@ -32,7 +32,18 @@ describe('CLI Tool', function () {
     should(cli).have.property('out', process.stdout);
   });
 
-  it('should return languages if -l is passed', function () {
+  it('should call list if -l is passed', function (done) {
+    var _list = CLI.prototype.list, cli;
+
+    argv = { list : true };
+
+    CLI.prototype.list = function () {
+      done();
+    };
+
+    cli = new CLI(argv, optimist);
+
+    CLI.prototype.list = _list;
   });
 
   it('should return error if file not found', function (done) {
