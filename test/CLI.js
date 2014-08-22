@@ -37,12 +37,13 @@ describe('CLI Tool', function () {
   it('should return error if file not found', function (done) {
     argv = { file : 'filethat!@#$%\n^CantExist' };
 
-    console.error = function (error) {
+    CLI.prototype.error = function (error) {
       var notFoundExp = /not found/
 
       notFoundExp.test(error).should.equal(true);
       done();
-    }
+    };
+
     var cli = new CLI(argv, optimist);
   });
 });
