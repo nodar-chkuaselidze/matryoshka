@@ -67,4 +67,14 @@ describe('CLI Tool', function () {
     var cli = new CLI(argv, optimist);
     should(cli).have.property('in').and.be.an.instanceOf(stream.Readable);
   });
+
+  it('should fail if output file can\'t be created', function (done) {
+    CLI.prototype.error = function (error) {
+      error.match('Could not write to file').should.be.an.Array;
+      done();
+    };
+
+    argv = { output : 'nosuchDir/file' };
+    new CLI(argv, optimist);
+  });
 });
