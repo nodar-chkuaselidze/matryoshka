@@ -46,4 +46,17 @@ describe('CLI Tool', function () {
 
     var cli = new CLI(argv, optimist);
   });
+
+  it('should return error if output file exists', function (done) {
+    argv = { output : 'test/file' };
+
+    CLI.prototype.error = function (error) {
+      var fileExistsExp = /already exists/
+
+      fileExistsExp.test(error).should.equal(true);
+      done();
+    };
+
+    var cli = new CLI(argv, optimist);
+  });
 });
