@@ -1,4 +1,5 @@
 var should = require('should'),
+    stream = require('stream'),
     CLI    = require('../lib/CLI.js');
 
 describe('CLI Tool', function () {
@@ -27,8 +28,8 @@ describe('CLI Tool', function () {
   it('should use stdin and stdout for input/output if files are not provided', function () {
     var cli = new CLI(argv, optimist);
 
-    cli.in.should.equal(process.stdin);
-    cli.out.should.equal(process.stdout);
+    should(cli).have.property('in',  process.stdin);
+    should(cli).have.property('out', process.stdout);
   });
 
   it('should return languages if -l is passed', function () {
@@ -58,5 +59,12 @@ describe('CLI Tool', function () {
     };
 
     var cli = new CLI(argv, optimist);
+  });
+
+  it('should have in parameter as ReadableStream', function () {
+    argv = { file : 'test/file', depth : 0 };
+
+    var cli = new CLI(argv, optimist);
+    should(cli).have.property('in').and.be.an.instanceOf(stream.Readable);
   });
 });
