@@ -1,6 +1,7 @@
 var should = require('should'),
   Matryoshka = require('../lib/').Matryoshka,
   Qfs = require('q-io/fs'),
+  Q = require('q'),
   langs;
 
 describe('Matryoshka Packer API', function () {
@@ -18,13 +19,32 @@ describe('Matryoshka Packer API', function () {
 
   it('should have static method collectLanguages to collect all languages', function (done) {
     Matryoshka.collectLanguages().then(function (languages) {
+      var files = [], promises;
+
       languages.should.be.an.instanceOf(Object);
 
       Object.keys(languages).forEach(function (lang) {
         languages[lang].should.be.an.instanceOf(Array);
+        files = files.concat(languages[lang]);
       });
 
-      done();
+      promises = files.map(function (file) {
+        file.should.be.type('string');
+        file.should.endWith('.js');
+
+        return Qfs.isFile(file).then(function (isFile) {
+          isFile.should.equal(true);
+        });
+      });
+
+      Q.all(promises)
+        .then(function () {
+          done();
+        })
+        .fail(function (error) {
+          done(error);
+        });
+
     })
     .fail(function (error) {
       done(error);
@@ -37,6 +57,7 @@ describe('Matryoshka Packer API', function () {
 
       randPacker.should.be.type('string');
       randPacker.should.endWith('.js');
+      done();
     })
     .fail(function (error) {
       done(error);
