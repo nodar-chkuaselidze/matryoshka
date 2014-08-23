@@ -16,6 +16,7 @@ describe('Matryoshka Packer API', function () {
 
       Object.keys(languages).forEach(function (lang) {
         lang.should.be.an.instanceOf(Array);
+        done();
       });
     });
   });
