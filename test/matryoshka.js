@@ -1,7 +1,9 @@
 var should = require('should'),
+  stream  = require('stream'),
   Matryoshka = require('../lib/').Matryoshka,
   Qfs = require('q-io/fs'),
   Q = require('q'),
+  UpperCaseTransform = require('./upperCaseTransform'),
   langs;
 
 describe('Matryoshka Packer API', function () {
@@ -90,6 +92,28 @@ describe('Matryoshka Packer API', function () {
       })
       .fail(function (error) {
         done(error);
+      });
+  });
+
+  it('should pack with test packer', function (done) {
+    var
+      strToPipe = 'hello world',
+      expectedStr = strToPipe.toUpperCase(),
+      inStream = new stream.PassThrough(),
+      outStream = new stream.PassThrough(),
+      matryoshka = new Matryoshka(1, inStream, outStream);
+
+      matryoshka.pipeAll([ new UpperCaseTransform() ]);
+
+      inStream.end(strToPipe, 'utf8');
+      outStream.on('readable', function () {
+        var str = '', tmp;
+        while((tmp = outStream.read()) != null) {
+          str += tmp.toString();
+        }
+
+        str.should.equal(expectedStr);
+        done();
       });
   });
 });
