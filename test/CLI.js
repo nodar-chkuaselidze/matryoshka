@@ -82,7 +82,7 @@ describe('CLI Tool', function () {
 
   it('should fail if output file can\'t be created', function (done) {
     CLI.prototype.error = function (error) {
-      error.match('Could not write to file').should.be.an.Array;
+      error.match('Could not write to file').should.be.an.instanceOf(Array);
       done();
     };
 
