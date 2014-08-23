@@ -6,13 +6,13 @@
   "bin": {
     "matryoshka-js": "index.js"
   },
-  "main" : "lib/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
-    "cover" : "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "cover-view" : "istanbul cover ./node_modules/mocha/bin/_mocha && open ./coverage/lcov-report/index.html",
-    "cover-clean" : "rm -rf ./coverage"
+    "cover-view": "istanbul cover ./node_modules/mocha/bin/_mocha && open ./coverage/lcov-report/index.html",
+    "cover-clean": "rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,8 @@
     "mocha-lcov-reporter": "0.0.1",
     "optimist": "^0.6.1",
     "q": "^1.0.1",
-    "q-io": "^1.11.4"
+    "q-io": "^1.11.4",
+    "tmp": "0.0.24"
   },
   "devDependencies": {
     "mocha": "^1.21.4",
