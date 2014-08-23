@@ -5,18 +5,21 @@ var should = require('should'),
 //not exactly cool tests.. but still..
 describe('CLI Tool', function () {
   var optimist = {}, argv = {},
-    _log, _error;
+    _log, _error, CLI_error;
+
+  _log = console.log;
+  _error = console.error;
+  CLI_error = CLI.prototype.error;
 
   beforeEach(function () {
     optimist = {};
     argv = {};
-    _log = console.log;
-    _error = console.error;
   });
 
   afterEach(function () {
     console.log = _log;
     console.error = _error;
+    CLI.prototype.error = CLI_error;
   });
 
   it('should call showHelp if -h is passed', function (done) {
@@ -88,5 +91,23 @@ describe('CLI Tool', function () {
 
     argv = { output : 'nosuchDir/file' };
     new CLI(argv, optimist);
+  });
+
+  it('should exit process if error occurs', function (done) {
+    var _exit = process.exit,
+      errStr = 'error',
+      errCode = 1;
+
+    console.error = function () {};
+    process.exit  = function (ecode) {
+      if (errCode === ecode) {
+        done();
+      }
+    };
+
+    var cli = new CLI(argv, optimist);
+    cli.error(errStr, errCode);
+
+    process.exit = _exit;
   });
 });
