@@ -22,7 +22,7 @@ describe('Matryoshka Packer API', function () {
     });
   });
 
-  it('should collect languages based on include params', function (done) {
+  it('should include languages that are in include list', function (done) {
     var matryoshka = new Matryoshka(0, process.stdin, process.stdout);
 
     matryoshka.processLanguages('c,js', true)
@@ -32,6 +32,21 @@ describe('Matryoshka Packer API', function () {
         keys.length.should.equal(2);
         languages.should.have.property('c');
         languages.should.have.property('js');
+
+        done();
+      })
+      .fail(function (error) {
+        done(error);
+      });
+  });
+
+  it('should exclude languages that are in exclude list', function (done) {
+    var matryoshka = new Matryoshka(0, process.stdin, process.stdout);
+
+    matryoshka.processLanguages('c,js', false)
+      .then(function (languages) {
+        languages.should.not.have.property('c');
+        languages.should.not.have.property('js');
 
         done();
       })
