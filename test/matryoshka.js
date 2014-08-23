@@ -5,8 +5,11 @@ var should = require('should'),
 describe('Matryoshka Packer API', function () {
   it('should have static method languagePackers to collect packers based on language', function (done) {
     Matryoshka.languagePackers('js').then(function (cPackers) {
-      cPackers.should.be.an.Array;
+      cPackers.should.be.an.instanceOf(Array);
       done();
+    })
+    .fail(function (error) {
+      done(error);
     });
   });
 
@@ -19,6 +22,9 @@ describe('Matryoshka Packer API', function () {
       });
 
       done();
+    })
+    .fail(function (error) {
+      done(error);
     });
   });
 
