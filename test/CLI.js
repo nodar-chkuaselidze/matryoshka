@@ -2,6 +2,7 @@ var should = require('should'),
     stream = require('stream'),
     CLI    = require('../lib/CLI.js');
 
+//not exactly cool tests.. but still..
 describe('CLI Tool', function () {
   var optimist = {}, argv = {},
     _log, _error;
