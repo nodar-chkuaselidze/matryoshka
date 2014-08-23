@@ -50,6 +50,22 @@ describe('CLI Tool', function () {
     CLI.prototype.list = _list;
   });
 
+  it('should return appropriate message if -l passed', function (done) {
+    var cli = new CLI(argv, optimist);
+
+    console.log = function (str) {
+      console.log = _log;
+      str.match('xist of languages:').should.be.an.instanceOf(Array);
+    };
+
+    cli.list().then(function () {
+      done();
+    })
+    .fail(function (error) {
+      done(error);
+    });
+  });
+
   it('should return error if file not found', function (done) {
     argv = { file : 'filethat!@#$%\n^CantExist' };
 
