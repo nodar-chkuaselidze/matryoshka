@@ -55,7 +55,7 @@ describe('CLI Tool', function () {
 
     console.log = function (str) {
       console.log = _log;
-      str.match('xist of languages:').should.be.an.instanceOf(Array);
+      str.match('List of languages:').should.be.an.instanceOf(Array);
     };
 
     cli.list().then(function () {
