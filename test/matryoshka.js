@@ -21,4 +21,22 @@ describe('Matryoshka Packer API', function () {
       done();
     });
   });
+
+  it('should collect languages based on include params', function (done) {
+    var matryoshka = new Matryoshka(0, process.stdin, process.stdout);
+
+    matryoshka.processLanguages('c,js', true)
+      .then(function (languages) {
+        var keys = Object.keys(languages);
+        keys.should.be.an.instanceOf(Array);
+        keys.length.should.equal(2);
+        languages.should.have.property('c');
+        languages.should.have.property('js');
+
+        done();
+      })
+      .fail(function (error) {
+        done(error);
+      });
+  });
 });
