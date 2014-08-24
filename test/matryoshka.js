@@ -53,6 +53,21 @@ describe('Matryoshka Packer API', function () {
     });
   });
 
+  it('should have static method packerToName which converts lang and file to name', function () {
+    Matryoshka.packerToName('c', '/some/path/to/hello-c.js').should.equal('c:hello-c');
+  });
+
+  it('should have static method nameToPacker which converts name to packer lang and file', function () {
+    var packer = Matryoshka.nameToPacker('c:hello-c');
+
+    packer.should.be.an.instanceOf(Array);
+    packer.length.should.equal(2);
+    packer[0].should.equal('c');
+    packer[1].should.equal(Matryoshka.LANGS_PATH + '/c/hello-c.js');
+
+    Matryoshka.nameToPacker('c').should.equal(false);
+  });
+
   it('should take random language from langs object', function (done) {
     Matryoshka.collectLanguages().then(function (languages) {
       var randPacker = Matryoshka.getRandomLanguage(languages);
