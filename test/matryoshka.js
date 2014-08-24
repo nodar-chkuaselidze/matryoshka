@@ -116,4 +116,16 @@ describe('Matryoshka Packer API', function () {
         done();
       });
   });
+
+  it('should return 2 packers if depth is 2 even if it\'s same', function (done) {
+    matryoshka.depth = 2;
+    matryoshka.getPackers().then(function (packers) {
+      packers.should.be.an.instanceOf(Array);
+      packers.length.should.equal(2);
+      done();
+    })
+    .fail(function (error) {
+      done(error);
+    });
+  });
 });
