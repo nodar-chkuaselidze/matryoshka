@@ -7,7 +7,6 @@ function HelloCTransform () {
     return new HelloCTransform();
   }
 
-  console.log("------constructed-----");
   this.data = '#include <stdio.h>\n\n' +
     'int str[] = {';
 
@@ -42,7 +41,6 @@ HelloCTransform.prototype._transform = function (chunk, enc, cb) {
     this.push(char.toString());
     this.startedReading = true;
   }
-  console.log(chunk.length);
 
   cb();
 };
