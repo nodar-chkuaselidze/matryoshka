@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/nodar-chkuaselidze/matryoshka",
   "dependencies": {
+    "buffertools": "^2.1.2",
     "coveralls": "^2.11.1",
     "istanbul": "^0.3.0",
     "lodash": "^2.4.1",
