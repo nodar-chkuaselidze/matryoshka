@@ -82,7 +82,7 @@ describe('Matryoshka Packer API', function () {
   });
 
   it('should include languages that are in include list', function (done) {
-    matryoshka.processLanguages('c,js', true)
+    matryoshka.processLanguages('c:hello-c,js', true)
       .then(function (languages) {
         var keys = Object.keys(languages);
         keys.should.be.an.instanceOf(Array);
