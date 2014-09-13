@@ -89,7 +89,7 @@ describe('Matryoshka Packer API', function () {
         keys.length.should.equal(2);
         languages.should.have.property('c');
         languages.should.have.property('js');
-
+        languages.c.length.should.equal(1);
         done();
       })
       .fail(function (error) {
