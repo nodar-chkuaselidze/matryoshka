@@ -29,11 +29,16 @@ var packers = argv.packers.split(',').map(function (packer) {
 });
 
 packers.forEach(function (packer) {
-  var packerClass = require(packer[1]),
-    lang = packer[0][0],
+  var lang = packer[0][0],
     name = packer[0][1],
     fpath = path.resolve(tests, lang),
-    testIn, testOut;
+    testIn, testOut, packerClass;
+
+  try {
+    packerClass = require(packer[1]);
+  } catch(e) {
+    error('Could not find test files for ' + Matryoshka.packerToName(lang, packer[1]));
+  }
 
   if (!(packerClass instanceof stream.Transform)) {
     error('Packer "' + Matryoshka.packerToName(lang, packer[1]) + '" is not valid!');
