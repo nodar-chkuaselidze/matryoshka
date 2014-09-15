@@ -1,0 +1,10 @@
+#include <iostream>
+
+int str[] = {72,101,108,108,111,32,67,32,87,111,114,108,100,32,33,10};
+int main() {
+  for (long i = 0; i < sizeof(str) / sizeof(int); i++) {
+    std::cout << str[i];
+  }
+
+  return 0;
+}
