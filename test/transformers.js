@@ -33,7 +33,7 @@ Matryoshka.collectLanguages()
     describe('Existing Transformers', function () {
       names.forEach(function (name) {
         var file = files[name],
-          packer = require(files[name]),
+          packer = new require(files[name])(),
           dfiles;
 
         it('should be stream.Transform - ' + name, function () {
