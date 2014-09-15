@@ -13,7 +13,7 @@ function HelloCppTransform () {
   this.endData = '};\n' +
     'int main() {\n' +
     '  for (long i = 0; i < sizeof(str) / sizeof(int); i++) {\n' +
-    '    std::cout << str[i]);\n' +
+    '    std::cout << str[i];\n' +
     '  }\n' +
     '\n' +
     '  return 0;\n' +
