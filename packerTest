@@ -53,11 +53,17 @@ packers.forEach(function (packer) {
     return dfiles;
   })
   .then(function (dfiles) {
+    var tests = [];
+
     dfiles.forEach(function (dfile) {
       var filePath = fpath + '/' + dfile;
-
-      helpers.packIOFiles(packerClass, filePath, filePath + '.packed')
+      tests.push(helpers.packIOFiles(packerClass, filePath, filePath + '.packed'));
     });
+
+    return Q.all(tests);
+  })
+  .then(function () {
+    console.log('tests passed');
   })
   .fail(function (error) {
     console.log(error);
