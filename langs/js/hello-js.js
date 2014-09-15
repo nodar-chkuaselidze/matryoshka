@@ -7,8 +7,10 @@ function HelloJsTransform () {
     return new HelloJsTransform();
   }
 
-  this.data = '';
-  this.endData = '';
+  this.data = 'var str=[';
+  this.endData = '];\nstr.forEach(function (char) {\n' +
+    '  process.stdout.write(String.fromCharCode(char));\n' +
+    '});';
 
   this.startedReading = false;
   Transform.call(this);
