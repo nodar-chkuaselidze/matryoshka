@@ -35,7 +35,7 @@ packers.forEach(function (packer) {
     testIn, testOut, packerClass;
 
   try {
-    packerClass = require(packer[1]);
+    packerClass = new require(packer[1])();
   } catch(e) {
     error('Could not find test files for ' + Matryoshka.packerToName(lang, packer[1]));
   }
