@@ -52,4 +52,4 @@ HelloCTransform.prototype._flush = function (cb) {
 
 
 
-module.exports = new HelloCTransform();
+module.exports = HelloCTransform;

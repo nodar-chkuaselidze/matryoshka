@@ -43,4 +43,4 @@ HelloJsTransform.prototype._flush = function (cb) {
 
 
 
-module.exports = new HelloJsTransform();
+module.exports = HelloJsTransform;

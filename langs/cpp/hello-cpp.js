@@ -52,4 +52,4 @@ HelloCppTransform.prototype._flush = function (cb) {
 
 
 
-module.exports = new HelloCppTransform();
+module.exports = HelloCppTransform;
