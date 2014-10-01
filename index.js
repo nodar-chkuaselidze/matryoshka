@@ -37,11 +37,11 @@ argv = optimist
   })
   .options('i', {
     alias : 'include',
-    describe : 'Include languages, comma separated "js,c"',
+    describe : 'Include languages or encoders, comma separated "js,c:hello-c"',
   })
   .options('e', {
     alias : 'exclude',
-    describe : 'Exclude languages, comma separated "js,c"',
+    describe : 'Exclude languages or encoders, comma separated "js,c:hello-c"',
   })
   .argv;
 
